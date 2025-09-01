@@ -1,2 +1,26 @@
+# --- Clés et variables sensibles ---
 index_key.env
 *.env
+
+# --- Fichiers compilés Python / caches ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Logs et données temporaires ---
+*.log
+*.tmp
+*.bak
+
+# --- Outils / jar / binaires ---
+bfg-*.jar
+
+# --- Mac / IDE / OS spécifiques ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Fichiers de données éventuellement gros (optionnel) ---
+chunks.csv
