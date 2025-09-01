@@ -8,10 +8,23 @@ from pinecone import Pinecone
 from tenacity import retry, wait_exponential, stop_after_attempt
 import tiktoken
 
-# === REMPLIS ICI TES 2 CLES ===
-***REMOVED***
-PINECONE_API_KEY = "pcsk_4NKFCp_KAw2U8NLQRTnQh9Ayk8JkZjnF95ChRvXjrXSgDgHjz9FnjPmhxua63m5RtHyZKT"
+# === CHARGER LES CLES DE index_key.env ===
+import os
+
+# Vérifie que le fichier existe
+env_file = "index_key.env"
+if not os.path.exists(env_file):
+    raise FileNotFoundError(f"{env_file} introuvable. Crée-le avec tes clés.")
+
+# Lecture ligne par ligne
+with open(env_file, "r") as f:
+    for line in f:
+        if line.startswith("***REMOVED***
+            ***REMOVED***
+        elif line.startswith("PINECONE_API_KEY"):
+            PINECONE_API_KEY = line.strip().split("=",1)[1].strip()
 # ==============================
+
 
 CSV_PATH   = r"C:\Users\HONOR\OneDrive\Desktop\Aya_db\chunks.csv"
 INDEX_NAME = "aya-1536"           # ton index doit être en 1536 dims
