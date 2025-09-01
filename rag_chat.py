@@ -8,12 +8,12 @@ from pinecone import Pinecone
 
 # ================= CONFIG =================
 # Lecture sécurisée des clés depuis les variables d'environnement
-***REMOVED***
+OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY")
 PINECONE_API_KEY: str = os.getenv("PINECONE_API_KEY")
 INDEX_HOST: str = os.getenv("INDEX_HOST")
 INDEX_NAME: str = os.getenv("INDEX_NAME")
 
-if not all([***REMOVED***
+if not all([OPENAI_API_KEY, PINECONE_API_KEY, INDEX_HOST, INDEX_NAME]):
     raise RuntimeError("❌ Une ou plusieurs variables d'environnement sont manquantes !")
 
 NAMESPACE: str = "en_v1"
@@ -30,7 +30,7 @@ MAX_CONTEXT_CHARS: int = 5000
 MEMORY_TURNS: int = 1
 
 # ================= INITIALISATION =================
-client: OpenAI = OpenAI(api_key=***REMOVED***
+client: OpenAI = OpenAI(api_key=OPENAI_API_KEY)
 pc: Pinecone = Pinecone(api_key=PINECONE_API_KEY)
 idx = pc.Index(name=INDEX_NAME, host=INDEX_HOST)
 

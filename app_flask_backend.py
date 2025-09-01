@@ -11,24 +11,24 @@ from pinecone import Pinecone
 # ------------------------------
 load_dotenv("index_key.env")
 
-***REMOVED***
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 PINECONE_ENV = os.getenv("PINECONE_ENV")
 INDEX_NAME = os.getenv("PINECONE_INDEX", "aya-1536")  # ton index serverless
 
-if not ***REMOVED***
-    raise ValueError("***REMOVED***
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY non trouvé dans index_key.env")
 if not PINECONE_API_KEY:
     raise ValueError("PINECONE_API_KEY non trouvé dans index_key.env")
 
-os.environ["***REMOVED***
+os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 # ------------------------------
 # Flask et OpenAI
 # ------------------------------
 app = Flask(__name__)
 CORS(app)
-openai = OpenAI(api_key=***REMOVED***
+openai = OpenAI(api_key=OPENAI_API_KEY)
 
 # ------------------------------
 # Pinecone v2 serverless

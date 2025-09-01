@@ -19,8 +19,8 @@ if not os.path.exists(env_file):
 # Lecture ligne par ligne
 with open(env_file, "r") as f:
     for line in f:
-        if line.startswith("***REMOVED***
-            ***REMOVED***
+        if line.startswith("OPENAI_API_KEY"):
+            OPENAI_API_KEY = line.strip().split("=",1)[1].strip()
         elif line.startswith("PINECONE_API_KEY"):
             PINECONE_API_KEY = line.strip().split("=",1)[1].strip()
 # ==============================
@@ -37,7 +37,7 @@ PAUSE_BETWEEN_REQUESTS = 0.4  # petite sieste pour lisser les quotas
 UPSERT_BATCH = 50             # upsert vers Pinecone par paquets (sans risque TPM)
 
 # --- Init clients
-client = OpenAI(api_key=***REMOVED***
+client = OpenAI(api_key=OPENAI_API_KEY)
 pc     = Pinecone(api_key=PINECONE_API_KEY)
 idx    = pc.Index(INDEX_NAME)
 print(f"TARS ▶ OK Pinecone index '{INDEX_NAME}'")
