@@ -4,12 +4,13 @@ import requests
 from openai import OpenAI
 from typing import List, Dict
 
-# ========= CONFIGURATION =========
-GOOGLE_API_KEY = "AIzaSyAPhP4yKBzMzbDm00lfeReWZ3ZZ3EAzGpM"  # <-- Remplace après
-GOOGLE_CX_ID   = "d67d1c22f6e2c4c8a"               # <-- Remplace après (Google Programmable Search Engine)
-MODEL_EMB      = "text-embedding-3-small"  # Pour vérifier la cohérence
-# =================================
+# ========= CONFIGURATION VIA VARIABLES D'ENVIRONNEMENT =========
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")       # Ta clé Google dans index_key.env
+GOOGLE_CX_ID   = os.getenv("GOOGLE_CX_ID")        # Ton CX ID Google
+MODEL_EMB      = "text-embedding-3-small"         # Pour vérifier la cohérence
+# ============================================================
 
+# Initialisation client OpenAI via clé d'environnement
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def google_search(query: str, num_results: int = 5) -> List[Dict]:
